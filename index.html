@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous">
+        <link
+            href="https://fonts.google.com/share?selection.family=Lora:ital,wght@0,400..700;1,400..700|Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900">
+            <link href="assets/css/style.css">
+        <title>Email Extractor</title>
+    </head>
+    <body>
+        <style>
+            @font-face {
+             font-family: poppins;
+            }
+            h1.h2,h3,h4,h5,h6,p,span,a,li {
+                font-family: poppins;
+            }
+            body{
+                background-color: #f2f4f8;
+            }
+        #emailList li{
+            font-size: 20px !important;
+            color: #000;
+            padding: 5px 10px;
+            margin: 10px 0px;
+            border-bottom: 1px solid #cecece;
+        }
+        /* .emi-btn{
+            background-color: blue !important;
+            color: #fff !important;
+            padding: 10px 40px !important;
+            border-radius: 10px !important;
+        } */
+        textarea{
+            width: 500px;
+            height: 300px;
+        }
+        button {
+  padding: 0.1em 0.25em;
+  width: 13em;
+  height: 4.2em;
+  background-color: #047bf8;
+  border: 0.08em solid #b1b1b1;
+  border-radius: 0.3em;
+  font-size: 12px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button span {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0.4em;
+  width: 8.25em;
+  height: 2.5em;
+  background-color: #047bf8;
+  border-radius: 0.2em;
+  font-size: 1.5em;
+  color: #fff;
+  border: 0.08em solid #fff;
+  box-shadow: 0 0.4em 0.1em 0.019em #fff;
+}
+
+button span:hover {
+  transition: all 0.5s;
+  transform: translate(0, 0.4em);
+  box-shadow: 0 0 0 0 #fff;
+}
+
+button span:not(hover) {
+  transition: all 1s;
+}
+.mainn{
+    padding: 60px 0px;
+}
+
+.scrl::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.scrl::-webkit-scrollbar-track {
+  background: #eeeeee; 
+}
+ 
+/* Handle */
+.scrl::-webkit-scrollbar-thumb {
+  background: #047bf8; 
+}
+
+/* Handle on hover */
+.scrl::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+.scrl{
+    margin: auto;
+    overflow: auto;
+    height: 600px;
+}
+
+
+.headd-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  position: relative;
+  padding: 0 20px;
+  font-size: 18px;
+  text-transform: uppercase;
+  border: 0;
+  box-shadow: hsl(210deg 87% 36%) 0px 7px 0px 0px;
+  background-color: hsl(210deg 100% 44%);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 31ms cubic-bezier(.5, .7, .4, 1);
+ }
+ 
+ .headd-btn:before {
+  content: attr(alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset: 0;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  letter-spacing: 4px;
+  opacity: 1;
+ }
+ 
+ .headd-btn:active {
+  box-shadow: none;
+  transform: translateY(7px);
+  transition: 35ms cubic-bezier(.5, .7, .4, 1);
+ }
+ 
+ .headd-btn:hover:before {
+  transition: all .0s;
+  transform: translateY(100%);
+  opacity: 0;
+ }
+ 
+ .headd-btn i {
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 4px;
+  font-style: normal;
+  transition: all 2s ease;
+  transform: translateY(-20px);
+  opacity: 0;
+ }
+ 
+ .headd-btn:hover i {
+  transition: all .2s ease;
+  transform: translateY(0px);
+  opacity: 1;
+ }
+ 
+ .headd-btn:hover i:nth-child(1) {
+  transition-delay: 0.045s;
+ }
+ 
+ .headd-btn:hover i:nth-child(2) {
+  transition-delay: calc(0.045s * 3);
+ }
+ 
+ .headd-btn:hover i:nth-child(3) {
+  transition-delay: calc(0.045s * 4);
+ }
+ 
+ .headd-btn:hover i:nth-child(4) {
+  transition-delay: calc(0.045s * 5);
+ }
+ 
+ .headd-btn:hover i:nth-child(6) {
+  transition-delay: calc(0.045s * 6);
+ }
+ 
+ .headd-btn:hover i:nth-child(7) {
+  transition-delay: calc(0.045s * 7);
+ }
+ 
+ .headd-btn:hover i:nth-child(8) {
+  transition-delay: calc(0.045s * 8);
+ }
+ 
+ .headd-btn:hover i:nth-child(9) {
+  transition-delay: calc(0.045s * 9);
+ }
+ 
+ .headd-btn:hover i:nth-child(10) {
+  transition-delay: calc(0.045s * 10);
+ }
+ @media (min-width: 310px) and (max-width: 767px){
+    .headd-btn{
+        display: none !important;
+    }
+    .litds{
+        padding-top: 50px 0px;
+    }
+
+ }
+
+    </style>
+
+        <header class="p-3 text-white" style="background-color: #047bf8;">
+            <div class="container">
+                <div
+                    class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <a href="/"
+                        class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                        <svg class="bi me-2" width="40" height="32" role="img"
+                            aria-label="Bootstrap"><use
+                                xlink:href="#bootstrap"></use></svg>
+                    </a>
+
+                    <ul
+                        class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                        <!-- <li><a href="#"
+                                class="nav-link px-2 text-white">Home</a></li> -->
+                        <img src="assets/img/Logo.png" width="200" alt>
+                    </ul>
+
+                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                        <!-- <input type="search"
+                            class="form-control form-control-dark"
+                            placeholder="Search..." aria-label="Search"> -->
+                            <button class="headd-btn" alt="Contact us">
+                                <i>C</i>
+                                <i>o</i>
+                                <i>n</i>
+                                <i>T</i>
+                                <i>a</i>
+                                <i>c</i>
+                                <i>T</i>
+                                <i>&nbsp;</i>
+                                <i>u</i>
+                                <i>s</i>
+                              </button>
+                    </form>
+
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="mainn">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <h2 style="color: #000; font-family: poppins;">Upload
+                            Content</h2>
+                        <form id="uploadForm">
+                            <textarea id="content"
+                                placeholder="Paste your content here"></textarea><br>
+                            <button type="submit">
+                                <span> Extracted Emails</span>
+                            </button>
+
+                            <!-- <button class="emi-btn" type="submit">Extract Emails</button> -->
+                        </form>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <div class="litds">
+                        <h2 style="color: #000; font-family: poppins;">Extracted
+                                Emails</h2>
+                            </div>
+                        <div class="scrl">
+                            
+                            <ol id="emailList"></ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+        function extractEmails(text) {
+            var emails = text.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
+            return emails;
+        }
+
+        document.getElementById("uploadForm").addEventListener("submit", async function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            var content = document.getElementById("content").value;
+            var extractedEmails = extractEmails(content);
+console.log(extractedEmails.length)
+            var emailList = document.getElementById("emailList");
+            emailList.innerHTML = ""; // Clear previous emails
+
+            if (extractedEmails) {
+                extractedEmails.forEach(function(email) {
+                    var listItem = document.createElement("li");
+                    listItem.textContent = email;
+                    emailList.appendChild(listItem);
+                });
+
+                // Send emails to the server
+                try {
+                    const response = await fetch('http://localhost:3000/saveEmails', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ emails: extractedEmails })
+                    });
+
+                    if (response.ok) {
+                        console.log('Emails saved successfully');
+                    } else {
+                        console.log('Failed to save emails');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            } else {
+                var listItem = document.createElement("li");
+                listItem.textContent = "No emails found.";
+                emailList.appendChild(listItem);
+            }
+        });
+    </script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+            crossorigin="anonymous"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+            crossorigin="anonymous"></script>
+
+            <footer style="background-color: #047bf8; padding: 20px 0px;">
+                <h2 style="color: #fff; font-size: 16px; text-align: center; font-family: poppins;">Copyright © 2024 by InnoverSol. All Rights Reserved</h2>
+            </footer>
+    </body>
+    
+</html>
