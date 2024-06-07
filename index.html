@@ -1,0 +1,138 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Extractor</title>
+</head>
+<body>
+    <style>
+        #emailList li{
+            font-size: 30px !important;
+        }
+    </style>
+
+    <h2>Upload Content</h2>
+    <form id="uploadForm">
+        <textarea id="content" placeholder="Paste your content here"></textarea><br>
+        <button type="submit">Extract Emails</button>
+    </form>
+
+    <h2>Extracted Emails</h2>
+    <ul id="emailList"></ul>
+
+    <script>
+        function extractEmails(text) {
+            var emails = text.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
+            return emails;
+        }
+
+        document.getElementById("uploadForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            var content = document.getElementById("content").value;
+            var extractedEmails = extractEmails(content);
+            console.log(extractedEmails)
+            var emailList = document.getElementById("emailList");
+            emailList.innerHTML = ""; // Clear previous emails
+            
+            if (extractedEmaFils) {
+                extractedEmails.forEach(function(email) {
+                    var listItem = document.createElement("li");
+                    listItem.textContent = email;
+                    emailList.appendChild(listItem);
+                });
+            } else {
+                var listItem = document.createElement("li");
+                listItem.textContent = "No emails found.";
+                emailList.appendChild(listItem);
+            }
+        });
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Email Extractor</title>
+    </head>
+    <body>
+        <style>
+        #emailList li{
+            font-size: 30px !important;
+        }
+    </style>
+    
+
+
+
+
+
+
+
+
+
+    
+
+        <h2>Upload Content</h2>
+        <form id="uploadForm">
+            <textarea id="content"
+                placeholder="Paste your content here"></textarea><br>
+            <button type="submit">Extract Emails</button>
+        </form>
+
+        <h2>Extracted Emails</h2>
+        <ul id="emailList"></ul>
+
+        <script>
+        function extractEmails(text) {
+            var emails = text.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
+            return emails;
+        }
+
+        document.getElementById("uploadForm").addEventListener("submit", async function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            var content = document.getElementById("content").value;
+            var extractedEmails = extractEmails(content);
+
+            var emailList = document.getElementById("emailList");
+            emailList.innerHTML = ""; // Clear previous emails
+
+            if (extractedEmails) {
+                extractedEmails.forEach(function(email) {
+                    var listItem = document.createElement("li");
+                    listItem.textContent = email;
+                    emailList.appendChild(listItem);
+                });
+
+                // Send emails to the server
+                try {
+                    const response = await fetch('http://localhost:3000/saveEmails', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ emails: extractedEmails })
+                    });
+
+                    if (response.ok) {
+                        console.log('Emails saved successfully');
+                    } else {
+                        console.log('Failed to save emails');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            } else {
+                var listItem = document.createElement("li");
+                listItem.textContent = "No emails found.";
+                emailList.appendChild(listItem);
+            }
+        });
+    </script>
+    </body>
+</html>
